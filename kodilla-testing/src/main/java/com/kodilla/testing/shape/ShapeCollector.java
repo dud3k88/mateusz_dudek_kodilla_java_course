@@ -30,7 +30,8 @@ public class ShapeCollector {
         if (shapeNumber >= 0 && shapeNumber < shapeList.size()) {
             shape = shapeList.get(shapeNumber);
         }
-        return shape;
+
+        return shape.getShapeName();
     }
 
     public List<Shape> showFigutes() {
