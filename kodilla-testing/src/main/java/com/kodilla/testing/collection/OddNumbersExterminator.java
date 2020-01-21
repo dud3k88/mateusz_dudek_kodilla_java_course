@@ -7,9 +7,9 @@ import java.util.List;
 public class OddNumbersExterminator {
 
 
-    public ArrayList<Integer>exterminate (ArrayList<Integer> numbers){
+    public List<Integer>exterminate (ArrayList<Integer> numbers){
 
-        ArrayList<Integer> oddList = new ArrayList<>();
+        List<Integer> oddList = new ArrayList<>();
 
         for (Integer temporary : numbers)
             if (temporary % 2 == 0) {

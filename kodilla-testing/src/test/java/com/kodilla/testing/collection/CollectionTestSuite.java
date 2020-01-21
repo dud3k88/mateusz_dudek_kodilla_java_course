@@ -2,6 +2,7 @@ package com.kodilla.testing.collection;
 import org.junit.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class CollectionTestSuite {
@@ -30,10 +31,10 @@ public class CollectionTestSuite {
 
 
     public void testOddNumbersExterminatorEmptyList() {
-        ArrayList<Integer> temporaryList = new ArrayList<>();
+        List<Integer> temporaryList = new ArrayList<>();
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
 
-        if (oddNumbersExterminator.exterminate(temporaryList).size() == 0) {
+        if (oddNumbersExterminator.exterminate((ArrayList<Integer>) temporaryList).size() == 0) {
             System.out.println("The method works correctly. ");
         } else {
             System.out.println("The method works incorrectly. ");
@@ -46,13 +47,13 @@ public class CollectionTestSuite {
 
     @Test
     public void testOddNumbersExterminatorNormalList() {
-        ArrayList<Integer> temporaryList = new ArrayList<>();
+        List<Integer> temporaryList = new ArrayList<>();
         Random random = new Random();
         for (int i = 0; i <30; i++) {
             temporaryList.add(random.nextInt(50));
         }
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
-        ArrayList<Integer> oddsList = oddNumbersExterminator.exterminate(temporaryList);
+        List<Integer> oddsList = oddNumbersExterminator.exterminate((ArrayList<Integer>) temporaryList);
 
         int moduloSum = 0;
         for (Integer inputList : oddsList) {

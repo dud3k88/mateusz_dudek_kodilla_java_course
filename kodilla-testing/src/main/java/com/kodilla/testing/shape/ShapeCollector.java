@@ -26,7 +26,6 @@ public class ShapeCollector {
 
     public Shape getFigure(int shapeNumber) {
 
-        Shape shape = null;
         if (shapeNumber >= 0 && shapeNumber < shapeList.size()) {
             shape = shapeList.get(shapeNumber);
         }
