@@ -18,8 +18,7 @@ public class World {
 
     public BigDecimal getTotalWorldPopulation (){
         BigDecimal totalWorldPopulation = getContinentList().stream()
-                .flatMap(continent -> continent.getCountries().stream())
-                .map(country -> country.getPeopleQuantity())
+                .map(continent -> continent.getContinentPeopleQuantity())
                 .reduce(BigDecimal.ZERO, (sum, current) -> sum = sum.add(current));
         return totalWorldPopulation;
 

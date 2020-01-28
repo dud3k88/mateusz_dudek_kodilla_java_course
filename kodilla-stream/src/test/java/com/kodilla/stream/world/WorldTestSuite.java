@@ -10,12 +10,12 @@ public class WorldTestSuite {
 
     @Test
     public void getPeopleQuantityOfWorld (){
-        Country china = new Country("China", new BigDecimal(1_386_000_000), "Asia" );
-        Country japan = new Country("Japan", new BigDecimal(126_800_000), "Asia");
-        Country poland = new Country("Poland", new BigDecimal(37_980_000), "Europe");
-        Country germany = new Country("Germany", new BigDecimal(82_980_000), "Europe");
-        Country brazil = new Country("Brazil", new BigDecimal(208_000_000), "South America");
-        Country argentina = new Country("Argentina", new BigDecimal(44_270_000), "South America");
+        Country china = new Country("China", new BigDecimal(1_386_000_000));
+        Country japan = new Country("Japan", new BigDecimal(126_800_000));
+        Country poland = new Country("Poland", new BigDecimal(37_980_000));
+        Country germany = new Country("Germany", new BigDecimal(82_980_000));
+        Country brazil = new Country("Brazil", new BigDecimal(208_000_000));
+        Country argentina = new Country("Argentina", new BigDecimal(44_270_000));
 
         Continent asia = new Continent("Asia");
         Continent europe = new Continent("Europe");
