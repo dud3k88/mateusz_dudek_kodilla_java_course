@@ -27,10 +27,10 @@ public class ShapeCollector {
     public Shape getFigureName(int shapeNumber) {
 
         if (shapeNumber >= 0 && shapeNumber < shapeList.size()) {
-            shape = shapeList.get(shapeNumber);
+            shape = shapeList.get(shapeNumber).getShapeName();
         }
 
-        return shape.getShapeName();
+        return shape;
     }
 
     public List<Shape> showFigutes() {
