@@ -43,7 +43,7 @@ public class ShapeCollectorTestSuite {
         Shape shape1 = new Triangle(30, 20);
         shapeCollector.addFigure(shape1);
 
-        Shape temporaryShape = shapeCollector.getFigureName(0);
+        Shape temporaryShape = shapeCollector.getFigure(0);
 
         Assert.assertEquals(shape1.getShapeName(), temporaryShape);
     }

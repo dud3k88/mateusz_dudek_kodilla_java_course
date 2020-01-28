@@ -24,13 +24,13 @@ public class ShapeCollector {
         return result;
     }
 
-    public Shape getFigureName(int shapeNumber) {
+    public Shape getFigure(int n) {
 
-        if (shapeNumber >= 0 && shapeNumber < shapeList.size()) {
-            shape = shapeList.get(shapeNumber).getShapeName();
+        if (n >= 0 && n < shapeList.size()) {
+            return shapeList.get(n);
+        } else {
+            return null;
         }
-
-        return shape;
     }
 
     public List<Shape> showFigutes() {
