@@ -4,20 +4,20 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class BoardTestSuite {
 
-    public Board prepareTestData(){
-        //user
+    public Board prepareTestData() {
+        //users
         User user1 = new User("developer1", "John Smith");
         User user2 = new User("projectmanager1", "Nina White");
         User user3 = new User("developer2", "Emilia Stephanson");
         User user4 = new User("developer3", "Konrad Bridge");
-
         //tasks
         Task task1 = new Task("Microservice for taking temperature",
                 "Write and test the microservice taking\n" +
@@ -72,7 +72,6 @@ public class BoardTestSuite {
         project.addTaskList(taskListInProgress);
         project.addTaskList(taskListDone);
         return project;
-
     }
 
     @Test
@@ -94,7 +93,7 @@ public class BoardTestSuite {
         List<Task> tasks = project.getTaskLists().stream()
                 .flatMap(l -> l.getTasks().stream())
                 .filter(t -> t.getAssignedUser().equals(user))
-                .collect(Collectors.toList());
+                .collect(toList());
         //Then
         Assert.assertEquals(2, tasks.size());
         Assert.assertEquals(user, tasks.get(0).getAssignedUser());
@@ -114,12 +113,13 @@ public class BoardTestSuite {
                 .filter(undoneTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
                 .filter(t -> t.getDeadline().isBefore(LocalDate.now()))
-                .collect(Collectors.toList());
+                .collect(toList());
 
         //Then
         Assert.assertEquals(1, tasks.size());
         Assert.assertEquals("HQLs for analysis", tasks.get(0).getTitle());
     }
+
     @Test
     public void testAddTaskListFindLongTasks() {
         //Given
@@ -146,14 +146,26 @@ public class BoardTestSuite {
         //When
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
-        long longTasks = project.getTaskLists().stream()
+
+        int sumOfDays = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
-                .flatMap(t1 -> t1.getTasks().stream())
-                .map(t -> t.getCreated())
-                .count();
+                .flatMap(tl -> tl.getTasks().stream())
+                .map(task -> Period.between(task.getCreated(), LocalDate.now()).getDays())
+                .reduce(0, (sum, current)->sum+=current );
+
+        int sumOfTask = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .map(task -> Period.between(task.getCreated(), LocalDate.now()).getDays())
+                .map(t ->1)
+                .reduce(0, (sum, current)->sum+=current );
+
+        double average = sumOfDays/sumOfTask;
+
+
+
+        //Then
+        Assert.assertEquals(10.0, average, 0.0001);
 
     }
-
-
-
 }
