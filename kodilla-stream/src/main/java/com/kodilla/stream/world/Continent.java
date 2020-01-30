@@ -8,7 +8,6 @@ public class Continent {
 
     private final String continentName;
     private final List<Country> countries = new ArrayList<>();
-    private BigDecimal getPeopleQuantity;
 
     public Continent(String continentName) {
         this.continentName = continentName;
@@ -20,7 +19,7 @@ public class Continent {
 
     public BigDecimal getContinentPeopleQuantity() {
         BigDecimal continentPopulation = getCountries().stream()
-                .map(country -> country.getPeopleQuantity())
+                .map(country -> country.getPeopleQuantityOfCountry())
                 .reduce(BigDecimal.ZERO, (sum, current) -> sum = sum.add(current));
         return continentPopulation;
 
