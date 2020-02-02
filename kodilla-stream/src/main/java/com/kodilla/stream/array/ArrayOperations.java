@@ -2,6 +2,8 @@ package com.kodilla.stream.array;
 
 import java.util.OptionalDouble;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
+import java.util.*;
 
 
 public interface ArrayOperations {
@@ -11,13 +13,12 @@ public interface ArrayOperations {
                 .map(n -> numbers[n])
                 .forEach(System.out::println);
 
-        OptionalDouble result = IntStream.range(0, numbers.length)
-                .average();
-        if (result.isPresent()){
-            return result.getAsDouble();
-        }else {
-            return 0.0;
-        }
+        Double result = IntStream.range(0, numbers.length)
+                .map(t -> numbers[t])
+                .average()
+                .orElse(0);
+
+        return result;
 
     }
 }
