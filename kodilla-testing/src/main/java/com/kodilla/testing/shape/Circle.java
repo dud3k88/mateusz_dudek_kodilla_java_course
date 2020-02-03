@@ -3,6 +3,7 @@ package com.kodilla.testing.shape;
 public class Circle implements Shape {
 
     private double radius;
+    private static String figureName = "Circle";
     private static double pi = 3.14;
 
     public Circle(double radius) {
@@ -10,9 +11,8 @@ public class Circle implements Shape {
     }
 
     @Override
-    public Shape getShapeName() {
-        System.out.println("Circle");
-        return null;
+    public String getShapeName() {
+        return figureName;
     }
 
     @Override

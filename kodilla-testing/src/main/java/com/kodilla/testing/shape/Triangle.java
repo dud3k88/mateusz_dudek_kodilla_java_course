@@ -4,6 +4,7 @@ public class Triangle implements Shape{
 
     private double baseArea;
     private double height;
+    private static String figureName = "Triangle";
 
     public Triangle(double baseArea, double height) {
         this.baseArea = baseArea;
@@ -11,9 +12,8 @@ public class Triangle implements Shape{
     }
 
     @Override
-    public Shape getShapeName() {
-        System.out.println("Triangle");
-        return null;
+    public String getShapeName() {
+        return figureName;
     }
 
     public double getField() {
